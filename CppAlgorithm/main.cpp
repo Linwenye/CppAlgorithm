@@ -10,6 +10,7 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+    double i=1.0/100;
+    if (i<1e-6) std::cout<<"hh";
     return 0;
 }
