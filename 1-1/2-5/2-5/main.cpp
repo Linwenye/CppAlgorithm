@@ -7,9 +7,9 @@
 //
 
 #include <stdio.h>
-#include <string>
+//#include <string>
 
-using namespace std;
+//using namespace std;
 int main(int argc, const char *argv[])
 {
     // insert code here...
@@ -19,9 +19,9 @@ int main(int argc, const char *argv[])
         if (a == 0 && b == 0 && c == 0) {
             break;
         }
-        string print_str = string("Case %d: %.")+to_string(c)+string("lf\n");
+//        string print_str = string("Case %d: %.")+to_string(c)+string("lf\n");
 //        Case %d: %.if
-        printf((char *)print_str.c_str(), case_i++, double(a) / double(b));
+        printf("Case %d: %.*lf\n", case_i++, c, double(a) / double(b));
     }
     return 0;
 }
