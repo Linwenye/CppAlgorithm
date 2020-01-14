@@ -1,51 +1,30 @@
-//
-//  main.cpp
-//  3-6
-//
-//  Created by 林文烨 on 2020/1/10.
-//  Copyright © 2020 林文烨. All rights reserved.
-//
-
 #include <iostream>
-#include <string>
-#include <vector>
-
+#include <stdio.h>
+#include <map>
 using namespace std;
-int main(int argc, const char *argv[])
+int main()
 {
-    // insert code here...
-
-    int r, c;
-    vector<string> puzzle;
-
-    while (cin>>r)
-    {
-        if (r == 0)
+    string a,b;
+    while(cin>>a>>b){
+        int a_i=0,b_i=0;
+        while (true)
         {
-            return 0;
-        }
-        cin >> c;
-        char **puzzle = new char*[r];
-        for (size_t i = 0; i < r; i++)
-        {
-            puzzle[i] = new char[c];
-        }
-        
-        for (int i=0; i<r; i++) {
-            for (int j=0; j<c; j++) {
-                cin>>puzzle[i][j];
+            if(a_i>=a.length()){
+                cout<<"Yes"<<endl;
+                break;
+            }
+            if(b_i>=b.length()){
+                cout<<"No"<<endl;
+                break;
+            }
+            if(a[a_i]==b[b_i]){
+                a_i++;
+                b_i++;
+            }
+            else
+            {
+                b_i++;
             }
         }
-        
-         for (size_t i = 0; i < r; i++)
-         {
-             for (size_t j = 0; j < c; j++)
-             {
-                 cout<<puzzle[i][j]<<" ";
-             }
-             cout<<endl;
-         }
     }
-
-    return 0;
 }
