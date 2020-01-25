@@ -1,6 +1,6 @@
 #include <cstdio>
 
-int N=0, k=0, m=0;
+int N = 0, k = 0, m = 0;
 
 struct Node
 {
@@ -46,7 +46,7 @@ public:
             node->next->prev = node->prev;
         }
         size--;
-        printf("%3d",node->value);
+        printf("%3d", node->value);
         delete node;
     }
 
@@ -56,7 +56,8 @@ public:
         Node *counter = head->prev;
         while (size)
         {
-            if(size!=N) printf(",");
+            if (size != N)
+                printf(",");
             for (size_t i = 0; i < k % size; i++)
             {
                 clockwise = clockwise->next;
@@ -65,12 +66,23 @@ public:
             {
                 counter = counter->prev;
             }
-            if (clockwise->prev == counter->next)
-                removeNode(clockwise->prev);
+            Node *clockwise_remove = clockwise->prev;
+            Node *counter_remove = counter->next;
+
+            if (clockwise_remove == counter_remove)
+                removeNode(clockwise_remove);
             else
             {
-                removeNode(clockwise->prev);
-                removeNode(counter->next);
+                if (clockwise == counter_remove)
+                {
+                    clockwise = clockwise->next;
+                }
+                if (counter == clockwise_remove)
+                {
+                    counter = counter->prev;
+                }
+                removeNode(clockwise_remove);
+                removeNode(counter_remove);
             }
         }
         printf("\n");
@@ -85,6 +97,6 @@ int main()
         if (N == 0)
             break;
         NodeQueue node_q(N);
-        node_q.remove(k,m);
+        node_q.remove(k, m);
     }
 }
