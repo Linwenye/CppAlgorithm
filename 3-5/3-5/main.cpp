@@ -6,6 +6,8 @@
 //  Copyright © 2020 林文烨. All rights reserved.
 //
 
+// \s 不可见字符
+// \S 可见字符
 #include <stdio.h>
 #include <ctype.h>
 #include <algorithm>

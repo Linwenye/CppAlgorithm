@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// 数字对齐～ %3d
 int main(int argc, const char *argv[])
 {
     // insert code here...
