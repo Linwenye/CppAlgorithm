@@ -12,6 +12,7 @@ int main()
     int kase = 0;
     while ((cin >> n_r >> n_c) && !(n_r == 0 && n_c == 0))
     {
+        if(kase!=0) cout<<endl;
         vector<vector<string>> table;
 
         for (size_t i = 0; i < n_r; i++)
@@ -126,6 +127,5 @@ int main()
             }
             
         }
-        cout<<endl;
     }
 }
