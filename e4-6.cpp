@@ -7,9 +7,13 @@
 
 using namespace std;
 
+/*
+    add和remove对数据一致性对维护！！（!!!!rank 排序，后插入对原来对影响！！！
+
+    更改为查询时再计算，而不从增删时计算
+*/
 struct Student
 {
-    int rank;
     string sid;
     int cid;
     string name;
@@ -28,6 +32,7 @@ int main()
 {
     cout << "Welcome to Student Performance Management System (SPMS).\n\n1 - Add\n2 - Remove\n3 - Query\n4 - Show ranking\n5 - Show Statistics\n0 - Exit\n"
          << endl;
+    // std::cout << std::unitbuf;
     int choice;
     while (cin >> choice && choice)
     {
@@ -46,21 +51,18 @@ int main()
                     break;
                 }
                 cin >> stud.cid >> stud.name >> stud.chinese >> stud.math >> stud.english >> stud.program;
+                // cout<<"Your input"<<stud.sid<<endl;
                 stud.total = stud.chinese + stud.math + stud.english + stud.program;
                 stud.average = stud.total / 4.0;
 
-                int rank = 1;
                 bool duplicate = false;
+
                 for (size_t i = 0; i < students.size(); i++)
                 {
                     if (stud.sid == students[i].sid)
                     {
                         duplicate = true;
                         break;
-                    }
-                    if (students[i].total > stud.total)
-                    {
-                        rank++;
                     }
                 }
                 if (duplicate)
@@ -69,7 +71,6 @@ int main()
                 }
                 else
                 {
-                    stud.rank = rank;
                     students.push_back(stud);
                 }
             }
@@ -122,7 +123,11 @@ int main()
                 {
                     if (stud.sid == query || stud.name == query)
                     {
-                        cout << stud.rank << " " << stud.sid << " " << stud.cid << " " << stud.name << " ";
+                        int rank=1;
+                        for(auto const &st2:students){
+                            if(stud.total<st2.total) rank++;
+                        }
+                        cout << rank << " " << stud.sid << " " << stud.cid << " " << stud.name << " ";
                         printf("%d %d %d %d %d %.2lf\n", stud.chinese, stud.math, stud.english, stud.program, stud.total, stud.average + EPS);
                     }
                 }
@@ -131,7 +136,7 @@ int main()
             break;
         }
         case 4: //rank
-            cout << "Showing the ranklist hurts students’ self-esteem. Don’t do that." << endl;
+            cout << "Showing the ranklist hurts students' self-esteem. Don't do that." << endl;
             break;
         case 5: //statistics
         {
