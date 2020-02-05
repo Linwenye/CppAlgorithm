@@ -208,13 +208,13 @@ int main()
 
         if (safe)
         {
-            cout << "NO";
+            cout << "NO" << endl;
         }
         else
         {
-            cout << "YES";
+            cout << "YES" << endl;
         }
 
-        print_danger();
+        // print_danger();
     }
 }
