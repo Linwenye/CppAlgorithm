@@ -15,9 +15,8 @@ int main()
     int n, m;
     int kase = 1;
 
-    while (scanf("%d", &n) != EOF)
+    while (scanf("%d %d", &n, &m) == 2)
     {
-        scanf("%d", &m);
         connects_h = new bool *[n + 1];
         connects_v = new bool *[n + 1];
         for (size_t i = 0; i < n + 1; i++)
